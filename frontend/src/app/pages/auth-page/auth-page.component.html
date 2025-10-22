@@ -1,0 +1,41 @@
+<main class="d-flex justify-content-center align-items-center min-vh-100">
+    <section class="d-flex flex-row gap-3 card w-50">
+        <form [formGroup]="form" (submit)="submit()" class="ps-3 py-3 col-5">
+            <h4 class="text-center mb-4">Seja Bem Vindo(a)!</h4>
+            <div class="mb-3">
+                <label class="form-label">E-mail</label>
+                <input class="form-control" type="email" formControlName="email">
+                <div class="invalid-feedback d-block">
+                    @if (form.get('email')?.invalid && form.get('email')?.touched) {
+                    @if (form.get('email')?.errors?.['required']) {
+                    <div>E-mail é obrigatório.</div>
+                    }
+                    @if (form.get('email')?.errors?.['email']) {
+                    <div>Informe um e-mail válido.</div>
+                    }
+                    }
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Senha</label>
+                <app-input-password-component formControlName="password" />
+                <div class="invalid-feedback d-block">
+                    @if (form.get('password')?.invalid && form.get('password')?.touched) {
+                    @if (form.get('password')?.errors?.['required']) {
+                    <div>Senha é obrigatório.</div>
+                    }
+                    }
+                </div>
+            </div>
+            <div class="d-flex flex-column">
+                <app-button-loading-component [loading]="loading" text="Entrar" typeButton="btn-success" />
+                <a class="text-center link-primary link-underline-opacity-0" routerLink="/register">Cadastre-se</a>
+            </div>
+        </form>
+        <div class="backgroud-login col p-3">
+            <h4 class="text-light">Bem-vindo(a)!</h4>
+            <p class="text-light">Seu ponto de partida para um dia a dia organizado. Entre e organize suas tarefas!</p>
+        </div>
+    </section>
+</main>
+<app-page-notifications-component />

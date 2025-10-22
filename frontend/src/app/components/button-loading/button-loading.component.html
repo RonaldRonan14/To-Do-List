@@ -1,0 +1,7 @@
+@if (loading) {
+<button class="btn {{ typeButton }} w-100 mb-1">
+    <div class="spinner-border text-light" role="status"></div>
+</button>
+} @else {
+<button class="btn {{ typeButton }} w-100 mb-1">{{text}}</button>
+}

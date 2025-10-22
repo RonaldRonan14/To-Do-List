@@ -1,0 +1,16 @@
+:root {
+  --vh-header-task: 120px;
+}
+
+.nav-link-hover:hover {
+    background-color: #F3F5F6;
+    transition: background-color .3s;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-no-drop {
+  cursor: no-drop;
+}

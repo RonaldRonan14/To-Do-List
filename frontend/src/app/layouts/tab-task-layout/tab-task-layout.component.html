@@ -1,0 +1,26 @@
+<div class="card border-0 h-100">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item col text-center tab-drop" (click)="changeTab(tabTaskType.InProgress)"
+                (dragover)="onDragOver($event)" (drop)="onDrop($event, tabTaskType.InProgress)">
+                <a class="nav-link cursor-pointer" [class.active]="selectedTab === tabTaskType.InProgress">Em andamento</a>
+            </li>
+
+            <li class="nav-item col text-center tab-drop" (click)="changeTab(tabTaskType.Completed)"
+                (dragover)="onDragOver($event)" (drop)="onDrop($event, tabTaskType.Completed)">
+                <a class="nav-link cursor-pointer" [class.active]="selectedTab === tabTaskType.Completed">Concluído</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body p-0">
+        <div class="list-group">
+            @for (item of tasks; track $index) {
+            <div class="draggable-wrapper" draggable="true" (dragstart)="onDragStart(item.id, $event)"
+                (dragend)="onDragEnd()">
+                <app-button-task-component [id]="item.id" [text]="item.title" [favorited]="item.favorited" />
+            </div>
+            }
+            <app-create-task-component />
+        </div>
+    </div>
+</div>

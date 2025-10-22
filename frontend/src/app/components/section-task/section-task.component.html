@@ -1,0 +1,38 @@
+@if (sectionOpen) {
+<section class="d-flex flex-column border-start border-1 min-vh-100">
+    <div class="d-flex justify-content-end">
+        <button class="btn border-0" (click)="closeSection()"><i class="bi bi-x-lg" title="Fechar"></i></button>
+    </div>
+    <form [formGroup]="form" class="flex-grow-1 px-2" (submit)="submit()">
+        <div class="d-flex justify-content-between me-1">
+            <div>
+                <input class="form-control border-0 fs-3 p-0" type="text" formControlName="title" />
+                <div class="invalid-feedback d-block">
+                    @if (form.get('title')?.invalid && form.get('title')?.touched) {
+                    @if (form.get('title')?.errors?.['required']) {
+                    <div>Apelido é obrigatório.</div>
+                    }
+                    @if (form.get('title')?.errors?.['maxlength']) {
+                    <div>Máximo 100 caracteres.</div>
+                    }
+                    }
+                </div>
+            </div>
+            <app-button-favorite-component [id]="task.id" [favorited]="task.favorited" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Vencimento</label>
+            <input class="form-control" type="date" formControlName="dueDate" />
+        </div>
+        <div>
+            <label class="form-label">Anotação</label>
+            <textarea class="form-control" rows="18" formControlName="annotations"></textarea>
+        </div>
+    </form>
+    <div class="d-flex justify-content-between border-1 border-top px-2">
+        <button class="btn border-0" title="Deletar tarefa" (click)="delete()"><i class="bi bi-trash3 text-danger"></i></button>
+        <app-button-finish-component [id]="task.id" [concludeMode]="!task.completed" />
+        <button class="btn border-0" title="Salvar tarefa" (click)="submit()"><i class="bi bi-floppy text-primary"></i></button>
+    </div>
+</section>
+}

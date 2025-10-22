@@ -1,0 +1,17 @@
+@if (createMode) {
+<div class="d-flex border-bottom">
+    <input #inputAdd class="form-control border-0" type="text" placeholder="Adicionar uma tarefa" 
+    [value]="value"
+    (blur)="blurInput()" 
+    (input)="inputValue($event.target.value)"
+    (keypress)="keypressInput($event.keyCode)">
+    <button class="btn" (click)="changeMode()"><i class="bi bi-x-lg text-danger" title="Cancelar"></i></button>
+    <button class="btn" (click)="createTask()"><i class="bi bi-plus-lg text-primary" title="Adicionar"></i></button>
+</div>
+}
+@else {
+<button type="button" class="list-group-item list-group-item-action border-0 border-bottom text-primary" (click)="changeMode()">
+    <i class="bi bi-plus-lg" title="Adicionar"></i>
+    Adicionar uma tarefa
+</button>
+}

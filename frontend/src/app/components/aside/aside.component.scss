@@ -1,0 +1,18 @@
+aside {
+  min-width: 16rem;
+
+  .img-profile {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+  }
+
+  .nav-link-active.px-3 {
+    border-left: 4px solid #0E738B !important;
+    padding-left: calc(1rem - 4px) !important;
+    background-color: #F3F5F6;
+  }
+}

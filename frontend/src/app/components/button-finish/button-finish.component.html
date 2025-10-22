@@ -1,0 +1,5 @@
+@if (concludeMode) {
+    <button class="btn border-0" title="Concluir tarefa" (click)="markCompleted()" type="button"><i class="bi bi-bookmark-check text-success"></i></button>
+} @else {
+    <button class="btn border-0" title="Remover tarefa de concluído" (click)="markCompleted()" type="button"><i class="bi bi-bookmark-check text-warning"></i></button>
+}

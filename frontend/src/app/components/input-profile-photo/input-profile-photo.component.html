@@ -1,0 +1,16 @@
+<div class="simple-profile d-flex flex-column align-items-center">
+    <div class="avatar" role="img" aria-label="avatar">
+        <img [src]="preview" alt="Preview" />
+    </div>
+
+    <div class="mt-2 d-flex gap-2">
+        <button type="button" class="btn btn-sm btn-outline-primary" (click)="openPicker()">
+            Escolher
+        </button>
+        @if (preview !== imageDefault) {
+        <button type="button" class="btn btn-sm btn-outline-danger" (click)="remove()">Remover</button>
+        }
+    </div>
+
+    <input #fileInput type="file" accept="image/*" (change)="onFileChange($event)" hidden />
+</div>

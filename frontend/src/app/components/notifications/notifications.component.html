@@ -1,0 +1,15 @@
+<div class="dropdown">
+    <button class="btn border-0 p-0 mt-2 me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <div>
+            <i class="bi bi-bell-fill text-light fs-5"></i>
+            <span class="number-notifications">{{ tasks.length }}</span>
+        </div>
+    </button>
+    <ul class="dropdown-menu">
+        @for (item of tasks; track $index) {
+            <li><button class="dropdown-item" (click)="displayTask(item.id)">{{ item.title }} - {{ item.dueDate ? (item.dueDate | date:'dd/MM/yyyy') : '—' }} </button></li>
+        } @empty {
+            <li><button class="dropdown-item">Sem notificações</button></li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,50 @@
+<section class="p-3">
+    <form [formGroup]="form" (submit)="submit()">
+        <div class="d-flex gap-3">
+            <div class="col-8">
+                <div class="mb-3">
+                    <label class="form-label">Apelido</label>
+                    <input class="form-control" type="text" formControlName="surname" />
+                    <div class="invalid-feedback d-block">
+                        @if (form.get('surname')?.invalid && form.get('surname')?.touched) {
+                        @if (form.get('surname')?.errors?.['required']) {
+                        <div>Apelido é obrigatório.</div>
+                        }
+                        @if (form.get('surname')?.errors?.['maxlength']) {
+                        <div>Máximo 100 caracteres.</div>
+                        }
+                        }
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">E-mail</label>
+                    <input class="form-control" type="email" formControlName="email" />
+                    <div class="invalid-feedback d-block">
+                        @if (form.get('email')?.invalid && form.get('email')?.touched) {
+                        @if (form.get('email')?.errors?.['required']) {
+                        <div>E-mail é obrigatório.</div>
+                        }
+                        @if (form.get('email')?.errors?.['email']) {
+                        <div>Informe um e-mail válido.</div>
+                        }
+                        }
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Senha atual</label>
+                    <app-input-password-component formControlName="currentPassword" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nova senha</label>
+                    <app-input-password-component formControlName="password" />
+                </div>
+            </div>
+            <div class="col">
+                <app-input-profile-photo-component formControlName="photoData" />
+            </div>
+        </div>
+        <div class="col-1">
+            <app-button-loading-component text="Salvar" [loading]="loading" typeButton="btn-success" />
+        </div>
+    </form>
+</section>

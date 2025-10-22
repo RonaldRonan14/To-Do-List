@@ -1,0 +1,60 @@
+<main class="d-flex justify-content-center align-items-center min-vh-100">
+    <form [formGroup]="form" (submit)="submit()" class="card p-3">
+        <div>
+            <a class="btn border-0 position-absolute p-0" type="button" routerLink="/auth"><i
+                    class="bi bi-arrow-left-short fs-3"></i></a>
+            <h3 class="text-center mb-3">Cadastre-se</h3>
+        </div>
+        <div class="d-flex gap-3">
+            <div class="col-7">
+                <div class="mb-3">
+                    <label class="form-label">Apelido</label>
+                    <input class="form-control" type="text" formControlName="surname">
+                    <div class="invalid-feedback d-block">
+                        @if (form.get('surname')?.invalid && form.get('surname')?.touched) {
+                        @if (form.get('surname')?.errors?.['required']) {
+                        <div>Apelido é obrigatório.</div>
+                        }
+                        @if (form.get('surname')?.errors?.['maxlength']) {
+                        <div>Máximo 100 caracteres.</div>
+                        }
+                        }
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">E-mail</label>
+                    <input class="form-control" type="email" formControlName="email" />
+                    <div class="invalid-feedback d-block">
+                        @if (form.get('email')?.invalid && form.get('email')?.touched) {
+                        @if (form.get('email')?.errors?.['required']) {
+                        <div>E-mail é obrigatório.</div>
+                        }
+                        @if (form.get('email')?.errors?.['email']) {
+                        <div>Informe um e-mail válido.</div>
+                        }
+                        }
+                    </div>
+                </div>
+                <div>
+                    <label class="form-label">Senha</label>
+                    <app-input-password-component formControlName="password" />
+                    <div class="invalid-feedback d-block">
+                        @if (form.get('password')?.invalid && form.get('password')?.touched) {
+                        @if (form.get('password')?.errors?.['required']) {
+                        <div>Senha é obrigatório.</div>
+                        }
+                        @if (form.get('password')?.errors?.['minlength']) {
+                        <div>Mínimo 6 caracteres.</div>
+                        }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex flex-column gap-1">
+                <app-input-profile-photo-component formControlName="photoData" />
+                <app-button-loading-component [loading]="false" text="Cadastrar" typeButton="btn-success" />
+            </div>
+        </div>
+    </form>
+</main>
+<app-page-notifications-component />
